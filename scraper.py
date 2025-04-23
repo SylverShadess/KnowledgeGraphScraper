@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -9,9 +11,10 @@ import time
 class Scraper:
     def __init__(self):
         self.chrome_options = Options()
+        load_dotenv()
 
         self.chrome_options.add_argument("--headless")  # Run in headless mode (no GUI)        
-        self.chrome_options.add_argument("--disable-features=BraveShields") # Disable Brave Shields
+        # self.chrome_options.add_argument("--disable-features=BraveShields") # Disable Brave Shields
         # self.chrome_options.add_argument('--ignore-certificate-errors')  # Disable SSL certificate verification
         # self.chrome_options.add_argument('--ignore-ssl-errors')
 
@@ -19,8 +22,8 @@ class Scraper:
         # self.chrome_options.add_argument('--no-sandbox') # Bypass OS security model
         # self.chrome_options.add_argument('--disable-dev-shm-usage') # Overcome limited resource problems
 
-        self.chrome_options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'  
-        self.service = Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe') 
+        self.chrome_options.binary_location = os.getenv('CHROME_LOCATION')
+        self.service = Service(os.getenv('CHROME_DRIVER_LOCATION'))
 
     def scrape(self, url: str, search: str="") -> list:
         try:
