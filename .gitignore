@@ -1,0 +1,7 @@
+.env
+__pycache__/auto_scraper.cpython-312.pyc
+__pycache__/database_manager.cpython-312.pyc
+__pycache__/extractor.cpython-312.pyc
+__pycache__/knowledge_graph.cpython-312.pyc
+__pycache__/scraper_db.cpython-312.pyc
+__pycache__/scraper.cpython-312.pyc
